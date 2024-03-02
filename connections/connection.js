@@ -18,3 +18,6 @@ sequelize
     });
 
 module.exports = sequelize;
+
+
+//making another push for today
