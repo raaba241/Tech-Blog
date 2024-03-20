@@ -1,9 +1,9 @@
 //Boiler plate 
 const userRoutes = require('./userRoutes');
 const router = require('express').Router();
-const blogRoutes = require('./blogRoutes');
+const dashRoutes = require('./dashboard');
 
 router.use('/users', userRoutes);
-router.use('/blogs', blogRoutes);
+router.use('/dashboard', dashRoutes);
 
 module.exports = router;
