@@ -1,35 +1,65 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
-const { User } = require('../models'); // Assuming your Sequelize User model
-const withAuth = require('../utils/auth'); // Middleware to verify if the user is logged in
-
-
 const router = express.Router();
+const { User } = require('../../models');
+const bcrypt = require('bcrypt');
 
-// allow users to login to their account
-router.get('/login', async (req, res) => {
-    try{
-        const userInfo = await User.findOne({ where: { email: req.body.email } });
-        
-        if (!userInfo){
-            res.status(400).json({ message: 'please enter a valid email or password'})
+// User registration
+router.post('/register', async (req, res) => {
+    try {
+        const userData = await User.create({
+            username: req.body.username,
+            email: req.body.email,
+            password: await bcrypt.hash(req.body.password, 10),
+        });
+
+        req.session.save(() => {
+            req.session.userId = userData.id;
+            req.session.username = userData.username;
+            req.session.loggedIn = true;
+
+            res.json({ user: userData, message: 'You are now registered and logged in.' });
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+// User login
+router.post('/login', async (req, res) => {
+    try {
+        const userData = await User.findOne({ where: { email: req.body.email } });
+        if (!userData) {
+            res.status(400).json({ message: 'Incorrect email or password, please try again' });
             return;
         }
 
-        const userPassword = await bcrypt.compare(req.body.password, userInfo.password);
-
-        if (!userPassword){
-            res.status(400).json({ message: 'please enter a valid email or password'})
+        const validPassword = await bcrypt.compare(req.body.password, userData.password);
+        if (!validPassword) {
+            res.status(400).json({ message: 'Incorrect email or password, please try again' });
             return;
         }
 
         req.session.save(() => {
-            req.session.userId = userInfo.id;
+            req.session.userId = userData.id;
+            req.session.username = userData.username;
             req.session.loggedIn = true;
 
-            res.json({ user: userInfo, message: 'You are now logged in!'});
+            res.json({ user: userData, message: 'You are now logged in.' });
         });
     } catch (err) {
-        res.status(400).json(err);
-    }   
+        res.status(500).json(err);
+    }
 });
+
+// User logout
+router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
+    } else {
+        res.status(404).end();
+    }
+});
+
+module.exports = router;
