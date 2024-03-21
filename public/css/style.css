@@ -1,82 +1,76 @@
-/* General reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  body, html {
+}
+
+body, html {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
+    color: yellow;
     background-color: #f4f4f4;
     font-size: 16px;
     line-height: 1.6;
-  }
-  
-  /* Flex column and utilities */
-  .flex-column {
+}
+
+.flex-column {
     display: flex;
     flex-direction: column;
-  }
-  
-  .display-flex {
+}
+
+.display-flex {
     display: flex;
-  }
-  
-  .justify-space-around {
+}
+
+.justify-space-around {
     justify-content: space-around;
-  }
-  
-  .justify-space-between {
+}
+
+.justify-space-between {
     justify-content: space-between;
-  }
-  
-  .align-center {
+}
+
+.align-center {
     align-items: center;
-  }
-  
-  /* Spacing */
-  .p-2 {
+}
+
+.p-2 {
     padding: 1rem;
-  }
-  
-  .mt-5 {
+}
+
+.mt-5 {
     margin-top: 3rem;
-  }
-  
-  /* Header styles */
-  header {
+}
+
+header {
     background: #333;
     color: #fff;
-  }
-  
-  header h1 {
+}
+
+header h1 {
     margin: 0;
-  }
-  
-  header nav a {
+}
+
+header nav a {
     color: #fff;
     text-decoration: none;
     padding: 0 0.5rem;
-  }
-  
-  header nav a:hover {
+}
+
+header nav a:hover {
     text-decoration: underline;
-  }
-  
-  /* Main container */
-  .container {
+}
+
+.container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-  }
-  
-  .container-fluid {
+}
+
+.container-fluid {
     width: 100%;
-  }
-  
-  /* Footer styles */
-  footer {
+}
+
+footer {
     background: #333;
     color: #fff;
     text-align: center;
@@ -84,48 +78,44 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-  }
+}
 
-  /* Blog posts general styles */
 .row {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  margin-bottom: 2rem; /* Adds space between posts */
-  background-color: #fff; /* Makes the posts stand out against the body background */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
-  border-radius: 8px; /* Rounds the corners for a softer look */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
 .col-md-5, .col-md-7 {
-  padding: 1rem;
+    padding: 1rem;
 }
 
-/* Responsive columns */
 @media (max-width: 768px) {
-  .col-md-5, .col-md-7 {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
+    .col-md-5, .col-md-7 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
 }
 
-/* Blog post titles */
 h2 {
-  font-size: 24px;
-  margin-bottom: 0.5rem;
+    font-size: 24px;
+    margin-bottom: 0.5rem;
 }
 
 h2 a {
-  color: #007bff; /* Provides a pop of color for titles */
-  text-decoration: none; /* Removes underline from links */
+    color: #007bff;
+    text-decoration: none;
 }
 
 h2 a:hover {
-  text-decoration: underline; /* Adds underline on hover for clarity */
+    text-decoration: underline;
 }
 
-/* Blog post content */
 p {
-  color: #666; /* Slightly muted text for easier reading */
-  line-height: 1.5; /* Improves readability */
+    color: #666;
+    line-height: 1.5;
 }

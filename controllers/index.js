@@ -1,9 +1,10 @@
-const router = require('express').Router();
-const homeRoutes = require('./homeRoutes');
-const apiRoutes = require('./api');
-const sequelize = require('../connections/connection');
+import express from 'express';
+import homeRoutes from './homeRoutes';
+import apiRoutes from './api';
+
+const router = express.Router();
 
 router.use('/', homeRoutes);
 router.use('/api', apiRoutes);
 
-module.exports = router;
+export default router;
