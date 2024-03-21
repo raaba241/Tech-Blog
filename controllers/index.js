@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const homeRoutes = require('./homeRoutes');
+const homeRoutes = require('./homeLane.js');
 const apiRoutes = require('./api');
 const sequelize = require('../connections/connection');
 
