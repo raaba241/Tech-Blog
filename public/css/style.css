@@ -88,43 +88,44 @@
 
   /* Blog posts general styles */
 .row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 2rem; /* Adds space between posts */
-    background-color: #fff; /* Makes the posts stand out against the body background */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
-    border-radius: 8px; /* Rounds the corners for a softer look */
-  }
-  
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-bottom: 2rem; /* Adds space between posts */
+  background-color: #fff; /* Makes the posts stand out against the body background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+  border-radius: 8px; /* Rounds the corners for a softer look */
+}
+
+.col-md-5, .col-md-7 {
+  padding: 1rem;
+}
+
+/* Responsive columns */
+@media (max-width: 768px) {
   .col-md-5, .col-md-7 {
-    padding: 1rem;
+    flex: 0 0 100%;
+    max-width: 100%;
   }
-  
-  /* Responsive columns */
-  @media (max-width: 768px) {
-    .col-md-5, .col-md-7 {
-      flex: 0 0 100%;
-      max-width: 100%;
-    }
-  }
-  
-  /* Blog post titles */
-  h2 {
-    font-size: 24px;
-    margin-bottom: 0.5rem;
-  }
-  
-  h2 a {
-    color: #007bff; /* Provides a pop of color for titles */
-    text-decoration: none; /* Removes underline from links */
-  }
-  
-  h2 a:hover {
-    text-decoration: underline; /* Adds underline on hover for clarity */
-  }
-  
-  /* Blog post content */
-  p {
-    color: #666; /* Slightly muted text for easier reading */
-    line-height: 1.5; /* Improves readability */
-  }
+}
+
+/* Blog post titles */
+h2 {
+  font-size: 24px;
+  margin-bottom: 0.5rem;
+}
+
+h2 a {
+  color: #007bff; /* Provides a pop of color for titles */
+  text-decoration: none; /* Removes underline from links */
+}
+
+h2 a:hover {
+  text-decoration: underline; /* Adds underline on hover for clarity */
+}
+
+/* Blog post content */
+p {
+  color: #666; /* Slightly muted text for easier reading */
+  line-height: 1.5; /* Improves readability */
+}

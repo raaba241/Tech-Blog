@@ -1,0 +1,52 @@
+.form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  
+  .form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 16px;
+  }
+  
+  .form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* Ensures padding doesn't affect the total width */
+  }
+  
+  /* Styling for the submit button */
+  .form .btn {
+    display: inline-block;
+    background-color: #007bff; /* Primary button color */
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .form .btn:hover {
+    background-color: #0056b3; /* Darker shade on hover for interactive feedback */
+  }
+  
+  /* Improve form accessibility */
+  .form input:focus {
+    border-color: #007bff; /* Highlights the field when focused */
+    outline: none; /* Removes the default focus outline to rely on the border color change */
+  }
+  
+  /* Placeholder styling for additional clarity */
+  .form input::placeholder {
+    color: #999;
+  }
