@@ -1,13 +1,14 @@
 const express = require('express');
 const { Blog, User } = require('../models');
 const router = express.Router();
+const sequelize = require('../connections/connection');
 
 
 // Get all posts for homepage
 
 router.get('/', async (req, res) => {
     try {
-        const getPosts = await Post.findAll({
+        const getPosts = await Blog.findAll({
             include: [
                 {
                     model: User,
@@ -17,6 +18,7 @@ router.get('/', async (req, res) => {
         });
 
         const posts = getPosts.map((post) => post.get({ plain: true }));
+        
         res.render('homepage', {
             posts,
             loggedIn: req.session.loggedIn,
@@ -28,35 +30,38 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/postSubmit', async (req, res) => {
+    res.render('create');
+});
+
 // Show dashboard when user logs in 
 
 router.get('/dashboard', async (req, res) => {
     try {
-        // Find the logged in user based on the session ID
-        const getUser = await User.findByPk(req.session.userId, {
-            attributes: { exclude: ['password'] },
-            include: [{ model: Post }],
-        });
-
-        // serialize the data
-
-        const user = getUser.get({ plain: true });
-
-        res.render('dashboard', {
-            user,
-            blogpost,
-            loggedIn: req.session.loggedIn,
-        });
-
+      // retrieve the logged in user based on the session ID, excluding pw
+      const userData = await User.findByPk(req.session.user_id, {
+        attributes: { exclude: ['password'] },
+        include: [{ model: Blog }],
+      });
+  
+      //serialize the user data
+      const user = userData.get({ plain: true });
+  
+      // render the dashboard template, passing the user data
+      res.render('dashboard', {
+        ...user,
+        logged_in: true
+      });
     } catch (err) {
-        res.status(500).json(err);
+      res.status(500).json(err);
     }
-}
-);
+  });
 
-// Show login page
 router.get ('/login', (req, res) => {
-    if (req.session.loggedIn) {
+
+    req.session.logginedIn = true;
+
+    if (true) {
         res.redirect('/dashboard');
         return;
     }

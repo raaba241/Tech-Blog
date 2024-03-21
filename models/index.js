@@ -1,7 +1,8 @@
 const User = require('./User');
 const Blog = require('./Blogpost');
+const sequelize = require('../connections/connection');
 
-User.hasMany(Project, {
+User.hasMany(Blog, {
   foreignKey: 'user_id',
   onDelete: 'CASCADE'
 });
